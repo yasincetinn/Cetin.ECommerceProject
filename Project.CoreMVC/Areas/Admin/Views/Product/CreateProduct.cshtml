@@ -1,0 +1,40 @@
+﻿@model ProductPageVM
+
+@*Siz eğer bir eğer bir formda sayfayı post ederken bir dosyada post etmek istiyorsanız (müzik resim vs..) şu attribute'u vermek zorundasınız => enctype.. Sizin göndereceğiniz dosyalar byte şeklinde gönderilir. Siz bu attribute'ü yazmazsanız post edilirken dosya hiçbir şekilde gitmez.*@
+
+<form asp-action="CreateProduct" asp-controller="Product" method="post" class="p-3 w-75 m-auto" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label>Enter Product Name :</label>
+        <input asp-for="Product.ProductName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Unit Price :</label>
+        <input asp-for="Product.UnitPrice" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Units In Stock :</label>
+        <input asp-for="Product.UnitsInStock" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="mb-3">
+        <label>Select Category</label>
+        <select asp-for="Product.CategoryID" asp-items='new SelectList(Model.Categories, "ID","CategoryName")'>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>File</label> @*Yukarıdaki enctype attribute sayesinde post edilecek.*@
+        <input type="file" name="formFile" class="form-control" accept="image/*"/> @*actiondaki verdiğiniz parametre ismi ile aynı olması gerekli yoksa yakalayamazsınız.. (formFile)*@
+        <small class="form-text text-muted">You can only upload images in JPG, JPEG or PNG format!</small>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Create Product</button>
+    </div>
+
+</form>

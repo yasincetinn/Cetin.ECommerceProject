@@ -1,0 +1,18 @@
+1) Proje Hybrid N-Tier mimarisinde ve Net Core(8.0) platformunda yazýlacaktýr.
+
+2) Projede açýlacak katmanlar :
+   - ENTITIES,
+   - CONF,
+   - DAL,
+   - BLL,
+   - Common (Her katman ortak kullanmak isteyebilecegi sýnýflarýn tutulacagý katman)
+   - UI (.Net Core MVC)
+
+3) Projede degiþken isimleri degiþkenler local variable oldugu sürece camelCase, field oldugu sürece baþýnda 
+   _ sembolü olmak üzere camelCase; Property, metot ve class isimleri PascalCase standartlarýnda yazýlacaktýr. Projede Türkçe karakter kullanýlmayacaktýr. Class isimleri çogul olmayacaktýr. Projede ambigiouty (tipi açýk bir þekilde belli olan yapýlarda tipin belirsizligini gösterecek yapýlar (var, dynamic vs.) belirten yapýlar kullanýlmayacaktýr. 
+
+4) Katman isimleri Project ile baslayacak nokta(.) sembolünden sonra katmansal takýlarla bitecektir.(Project.ENTITIES vs.)
+
+5) Tasarým patternlerinden Generic Repository kullanýlacaktýr. Mevcut algoritmada bu tasarým patternlerinin dýþýnda bir baska Tasarým Pattern'i öngörülmemektedir ancak projenin esnekliði buna elveriþli olduðu takdirde, projenin mimari paterniyle bir çakýsma olmamasý kaydýyla(Bu durum özel olarak istenecek olan bir Arge süreci icerisinde hemen belirlenmek zorundadýr) gerekli görülürse rahatca eklenebilecektir...
+
+6) Projede Pure View Models ve Page View Models kullanýlacaktýr. (DTO'ya yer verilmedi.)

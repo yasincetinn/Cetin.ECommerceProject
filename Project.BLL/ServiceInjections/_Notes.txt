@@ -1,0 +1,7 @@
+﻿İnstance alma yöntemleri(Transit Services, Scoped Services, Singleton Services)
+
+* Transient Services : Bir Request'in ulaştığı Scope'un parametre kümesinde aynı tipten kaç tane varsa o kadar instance alınır. Manager ve Repository'ler için anlamsızdır. Çünkü bunlardan bir tanesi bir Request'teki scope için yeterlidir.
+
+* Scoped Services : Bir Request'te Scope'un parametre kümesinde aynı tipte birden fazla parametre olsa bile 1 instance üzerinden çalışırsınız.Ancak bu Singleton değildir. (Çünkü Request'in işi bittiği zaman garbage collector Ram'den o instance'i kaldırır.) Bir Request'in scope'unda aynı tipte birden fazla instance, repository'ler ve Manager'lar için gerekli değildir. O yüzden Scoped tercih edilir.
+ 
+* Singleton Services : Bir Request'in ulaştığı Scope'un parametre kümesinde bir tip görüldüğü anda instance alınır ve program kapatılıncaya kadar o instance'dan devam edilir. Manager ve Repository'ler için çok tehlikelidir.(Mesela biz bir şeyi güncelleyeceğiz. ICategoryRepository'den instance aldık başkasıda aynı interface'den başka işlem yapıp instance aldı böylelikle ikiside çakışmış olacak...)

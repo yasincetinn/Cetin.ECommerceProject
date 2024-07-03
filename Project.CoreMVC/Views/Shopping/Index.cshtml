@@ -1,0 +1,97 @@
+﻿@model ShoppingPageVM
+
+<center><h1>@TempData["Message"]</h1></center>
+
+<div class="row">
+    <div class="col-md-3">
+
+        <section class="panel">
+            <header class="panel-heading">
+                CATEGORIES
+            </header>
+            <div class="panel-body">
+                <ul class="nav prod-cat">
+                    @foreach (CategoryShoppingViewModel item in Model.Categories)
+                    {
+                        <li style="padding-top:30px">
+                            <a asp-controller="Shopping" asp-action="Index" asp-route-categoryID="@item.ID">@item.CategoryName</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="col-md-9">
+        <section class="panel">
+
+                <div class="pull-right">
+                    <ul class="pagination pagination-sm pro-page-list">
+
+                        @if (TempData["catID"] != null)
+                        {
+                            <li>@Html.PagedListPager(Model.Products, page => Url.Action("Index", new { page, categoryID = TempData["catID"] }))</li>
+                        }
+                        else
+                        {
+                            @Html.PagedListPager(Model.Products, page => Url.Action("Index", new { page }))
+                        }
+                    </ul>
+                </div>
+        </section>
+
+        <div class="row product-list">
+
+
+            @foreach (ProductShoppingViewModel item in Model.Products)
+            {
+                <div class="col-md-4">
+                    <section class="panel">
+                        <div class="pro-img-box">
+
+                            @if (item.ImagePath.Contains("nightlife"))
+                            {
+                                <img src="/images/TheWarrior.jpg" />
+
+                            }
+
+                            else
+                            {
+                                <img src="@item.ImagePath" />
+                            }
+
+
+                            <a asp-action="AddToCart" asp-route-id="@item.ID" class="adtocart">
+                                <i class="icon-shopping-cart"></i>
+                            </a>
+                        </div>
+
+                        <div class="panel-body text-center">
+                            <h4>
+                                <a class="pro-title" title="@item.CategoryName">
+                                    @item.ProductName
+                                </a>
+                            </h4>
+                            <p class="price">$@item.UnitPrice</p>
+                        </div>
+                    </section>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .icon-shopping-cart {
+        color: yellowgreen; /* veya istediğiniz herhangi bir renk */
+    }
+</style>
+
+@section Sepet {
+
+    <li>
+        <a asp-controller="Shopping" asp-action="CartPage"><i class="icon-shopping-cart"></i>Cart</a>
+    </li>
+}

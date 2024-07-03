@@ -1,0 +1,11 @@
+﻿Lazy Loading : 
+
+Sayfada yer alan bir ögenin ihtiyaç duyulmadığı takdirde çağrılmaması prensibi ile çalışır yani bir nesne örneğinin gerçekten ihtiyaç duyulacağı ana kadar alınmaması ve bekletilmesi amacıyla kullanılır. Bu yöntemde veriler sorguya bağlı olarak çekilir ve veri setinin içindeki tüm dataları yüklemek yerine kullanılacağı an tekrar sorgu atar ve veriyi çeker.
+
+Örneğin, aşağıda verilen sorguyu çalıştırdığımızda, UserDetails tablosu Kullanıcı tablosu ile birlikte yüklenmeyecektir.
+
+User usr = dbContext.Users.FirstOrDefault(a => a.UserId == userId);
+
+Yalnızca, aşağıda gösterildiği gibi, açıkça aradığınızda yüklenir.
+
+UserDeatils ud = usr.UserDetails; // UserDetails are loaded here

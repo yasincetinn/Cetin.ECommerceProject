@@ -1,0 +1,12 @@
+Project.BLL : 
+-Project.DAL
+
+Project.CONF :
+-Project.ENTITIES
+
+Project.DAL :
+-Project.CONF
+
+Project.CoreMVC (UI) :
+-Project.BLL
+-Project.COMMON

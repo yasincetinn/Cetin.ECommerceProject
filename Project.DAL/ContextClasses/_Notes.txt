@@ -1,0 +1,26 @@
+﻿ASP.NET Core'da AddDbContextPool ve AddDbContext arasındaki farklar şunlardır:
+
+1) Scoped DbContext Kullanımı:
+
+AddDbContextPool: Bu metot, DbContext'in scoped (kapsamlı) olarak yönetilmesini sağlar. Scoped servisler, her istemci isteği için ayrı bir DbContext örneği oluşturur ve bu örneği istek sona erene kadar yeniden kullanır. Bu, uygulamanın performansını artırabilir, çünkü aynı DbContext örneği birden fazla istek tarafından kullanılabilir.
+
+AddDbContext: Bu metot ise genellikle transient veya scoped olarak kullanılabilir, ancak varsayılan olarak transient (geçici) olarak ayarlanır. Yani her çağrıda yeni bir DbContext örneği oluşturulur ve bu, hafıza kullanımını artırabilir.
+
+
+2) Performans ve Bellek Kullanımı:
+
+AddDbContextPool, uygulamanın performansını artırmak ve bellek kullanımını azaltmak için tasarlanmıştır. Çünkü aynı DbContext örneğinin birden fazla istek arasında paylaşılması, bellek üzerindeki yükü azaltabilir.
+
+AddDbContext ise her istek için yeni bir DbContext örneği oluşturduğundan, bellek kullanımı ve performans açısından AddDbContextPool'a göre daha pahalı olabilir.
+
+
+3) Önerilen Kullanım:
+
+Genellikle, AddDbContextPool kullanımı önerilir, özellikle web uygulamaları için. Bu sayede, uygulamanın bellek kullanımını ve performansını optimize etmek mümkün olur.
+Ancak bazı özel durumlarda (DbContext'in paylaşılmaması gereken özel durumlar gibi), AddDbContext tercih edilebilir.
+
+
+Özetle, AddDbContextPool ve AddDbContext arasındaki temel fark, DbContext örneklerinin nasıl yönetildiği ve paylaşıldığıdır. AddDbContextPool, performans ve bellek kullanımını optimize etmek için tasarlanmışken, AddDbContext daha genel ve her istek için yeni bir DbContext örneği oluşturur.
+
+
+

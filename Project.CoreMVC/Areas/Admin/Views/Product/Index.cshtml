@@ -1,0 +1,87 @@
+﻿@model List<ProductRequestModel>
+
+<h2>
+    <span class="text-danger">@TempData["Message"]</span>
+</h2>
+
+
+<h3><a asp-controller="Product" asp-action="CreateProduct" class="btn-primary"> Click to add a new product </a></h3>
+<h3><a asp-controller="Category" asp-action="Index">-> Go to category page</a></h3>
+<h3><a asp-controller="Order" asp-action="Index">-> Go to order page </a></h3>
+<br />
+
+@if (Model.Any(item => item.UnitsInStock <= 5))
+{
+    <div class="alert alert-danger" role="alert">
+
+        WARNING: There are products running out of stock!
+
+    </div>
+}
+
+<section class="panel">
+
+    <header class="panel-heading">
+        DataTables hidden row details example
+    </header>
+
+    <div class="panel-body">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+
+
+                @*
+                Başlıklar sütunlara denk gelmesi gerekli yoksa patlarsınız :)
+                *@
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>UnitPrice</th>
+                        <th>Category</th>
+                        <th>Image</th>
+                        <th class="hidden-phone">Stock</th>
+                        <th class="hidden-phone">Status</th>
+                        <th class="hidden-phone">Update</th>
+                        <th class="hidden-phone">Delete</th>
+                        <th class="hidden-phone">Destroy</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (ProductRequestModel item in Model)
+                    {
+
+                        <tr class="gradeX">
+                            <td>@item.ID</td>
+                            <td>
+                                @item.ProductName
+                            </td>
+                            <td>@item.UnitPrice</td>
+                            <td>@item.CategoryName</td>
+                            <td><img width="30" height="30" src="@item.ImagePath" /></td>
+
+                            @if (item.UnitsInStock <= 5)
+                            {
+                                <td class="center hidden-phone"><span class="text-danger">Only @item.UnitsInStock left in stock!</span></td>
+                            }
+
+                            else
+                            {
+                                <td class="center hidden-phone">@item.UnitsInStock</td>
+                            }
+
+                            <td class="center hidden-phone">@item.Status</td>
+
+                            <td class="center hidden-phone"><a asp-action="UpdateProduct" asp-route-id="@item.ID" class="btn btn-warning">Update</a></td>
+
+                            <td class="center hidden-phone"><a asp-action="DeleteProduct" asp-route-id="@item.ID" class="btn btn-danger">Delete</a></td>
+
+                            <td class="center hidden-phone"><a asp-action="DestroyProduct" asp-route-id="@item.ID" class="btn btn-info">Destroy</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

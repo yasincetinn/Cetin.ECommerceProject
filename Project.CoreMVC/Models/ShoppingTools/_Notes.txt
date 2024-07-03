@@ -1,0 +1,21 @@
+﻿JSON FORMATIN ÖNEMİ 
+
+ JSON (JavaScript Object Notation), verilerin metin tabanlı bir formatta taşınması ve depolanması için yaygın olarak kullanılan bir formatır. JSON'un avantajları şunlardır:
+
+1) Kolay Okunabilirlik ve Yazılabilirlik: İnsanlar tarafından okunması ve yazılması kolaydır. Aynı zamanda makineler arasında da kolayca işlenebilir.
+
+2) Hafiflik: JSON verileri metin formatında olduğu için hafiftir ve ağ üzerinde hızlıca taşınabilir.
+
+3) Bağımsızlık: JSON, dil bağımsızdır ve farklı programlama dilleri arasında veri alışverişini kolaylaştırır.
+
+Kullanım Nedenleri :
+
+CartItem sınıfı gibi, birçok durumda verileri taşımak ve iletmek için JSON formatı tercih edilir. Özellikle modern web uygulamalarında ve API'lerde JSON, istemciden sunucuya ve tam tersi yönde veri alışverişinde standart bir formattır. Örneğin:
+
+** API İletişimi: HTTP üzerinden gönderilen ve alınan verilerin çoğu JSON formatındadır. API'ler, JSON formatında veri alışverişi yaparak farklı platformlar arasında uyumluluğu sağlar.
+
+** Veritabanı Entegrasyonu: Veri tabanlarından alınan veya veritabanlarına gönderilen veriler genellikle JSON formatında kodlanarak depolanır ve taşınır.
+
+** Frontend-Backend İletişimi: Web uygulamalarında, frontend (örneğin JavaScript) ve backend (örneğin C# veya Java) arasında veri alışverişi sıklıkla JSON formatı üzerinden gerçekleştirilir.
+
+-- Sonuç olarak, CartItem sınıfındaki JsonProperty öznitelikleri ve Serializable özniteliği, bu sınıfın JSON formatında veri alışverişi için uygun hale getirilmesini sağlar. Bu sayede, bu sınıfı içeren verilerin kolayca taşınması, depolanması ve işlenmesi mümkün olur.

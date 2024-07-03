@@ -1,0 +1,41 @@
+﻿@model ProductPageVM
+
+<form asp-action="UpdateProduct" asp-controller="Product" method="post" class="p-3 w-75 m-auto" enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="Product.ID"/>
+    <input type="hidden" asp-for="Product.ImagePath"/>
+
+    <div class="mb-3">
+        <label>Enter Product Name :</label>
+        <input asp-for="Product.ProductName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Unit Price :</label>
+        <input asp-for="Product.UnitPrice" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Units In Stock :</label>
+        <input asp-for="Product.UnitsInStock" class="form-control" />
+    </div>
+
+    <br />
+
+    <div class="mb-3">
+        <label>Select Category</label>
+        <select asp-for="Product.CategoryID" asp-items='new SelectList(Model.Categories, "ID","CategoryName")'>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>File</label>
+        <input type="file" name="formFile" class="form-control" />
+        <small class="form-text text-muted">You can only upload images in JPG, JPEG or PNG format!</small>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Update Product</button>
+    </div>
+
+</form>
