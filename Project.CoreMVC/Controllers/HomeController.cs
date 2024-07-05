@@ -18,7 +18,9 @@ using static System.Net.WebRequestMethods;
 using System.Security.Policy;
 
 namespace Project.CoreMVC.Controllers
-{ 
+{
+    [AutoValidateAntiforgeryToken] ////Get ile gelen sayfada verilen özel bir token sayesinde Post'un bu tokensiz yapýlamamasýný saglar...PostMan gibi third part software'lerinden gözlemlediginizde direkt Post tarafýna ulasamadýgýnýzý göreceksiniz...
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -178,7 +180,7 @@ namespace Project.CoreMVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]  //Bu attribute, Cross-Site Request Forgery (CSRF) saldýrýlarýna karþý koruma saðlar ve böylece sunucunun istemci tarafýndan gönderilen isteklerin güvenilirliðini doðrulamasýna yardýmcý olur.
+       
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
             AppUser user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == model.Email); // Kullanýcýnýn e-posta adresine göre AppUser nesnesini veritabanýndan bulur .  FirstOrDefaultAsync, veri tabanýndan ilk uygun kullanýcýyý getirir. Eðer u.Email == model.Email koþuluna uyan bir kullanýcý yoksa null döner. Bu durum, veritabanýndan gereksiz yere tüm verileri almak yerine, sadece ilgili kullanýcýya ait verilerin alýnmasýný saðlar, bu da performansý artýrýr.
@@ -213,7 +215,7 @@ namespace Project.CoreMVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]  //Bu attribute, Cross-Site Request Forgery (CSRF) saldýrýlarýna karþý koruma saðlar ve böylece sunucunun istemci tarafýndan gönderilen isteklerin güvenilirliðini doðrulamasýna yardýmcý olur.
+        
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model) 
         {
             string userId = (string)TempData["userId"];  //TempData üzerinden alýnan userId ve token ile kullanýcý doðrulanýr. (FindByIdAsync kullanýlarak).

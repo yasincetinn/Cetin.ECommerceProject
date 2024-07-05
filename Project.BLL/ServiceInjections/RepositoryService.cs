@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 namespace Project.BLL.ServiceInjections
 {
     public static class RepositoryService
-    {
-        
+    {      
         public static IServiceCollection AddRepServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>)); //IRepository'i generic içerisinde yazamıyoruz çünkü onlar full generic sınıf. O yüzden bu şekilde yazıyoruz. 
