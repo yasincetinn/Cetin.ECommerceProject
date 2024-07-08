@@ -29,6 +29,7 @@
     <Folder Include="Areas\Admin\Models\Orders\PageVMs\" />
     <Folder Include="Areas\Admin\Models\OrderDetails\PageVMs\" />
     <Folder Include="Models\PureVMs\" />
+    <Folder Include="Models\Validators\Admins\Products\" />
     <Folder Include="wwwroot\OuterTools\assets\jquery-file-upload\server\php\files\thumbnail\" />
   </ItemGroup>
 

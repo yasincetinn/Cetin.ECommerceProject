@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Options;
 using Project.BLL.ServiceInjections;
 using System.Reflection;
@@ -8,7 +9,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient(); //Eðer bir API consume edilecekse HTTP protokolünde client tarafýnda olduðumuzu Middleware'e bildirmeliyiz.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(x=> x.RegisterValidatorsFromAssemblyContaining<Program>());
 
 builder.Services.AddDistributedMemoryCache(); //Eðer session kompleks yapýlarla çalýþmak için Extension metodu eklenme durumuna maruz kalmýþsa bu kod projenizin saðlýklý çalýþmasý için gereklidir. (Memory'de parçalayýp daðýt, tek bir blokta tutma)
 

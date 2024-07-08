@@ -60,6 +60,8 @@ namespace Project.CoreMVC.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                     ActivationCode = specId //User eklenirken aktivasyon koduda eklensin
+
+                    //buraya password'u almadýk çünkü identity þifrelemesini kullanacaðýz. O yüzden aþaðýya aldýk..
                 };
 
                 IdentityResult result = await _userManager.CreateAsync(appUser, model.Password);
