@@ -9,7 +9,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient(); //Eðer bir API consume edilecekse HTTP protokolünde client tarafýnda olduðumuzu Middleware'e bildirmeliyiz.
 
-builder.Services.AddControllersWithViews().AddFluentValidation(x=> x.RegisterValidatorsFromAssemblyContaining<Program>());
+builder.Services.AddControllersWithViews().AddFluentValidation(x=> x.RegisterValidatorsFromAssemblyContaining<Program>()); //Birden fazla validation sýnýflarýmýz olacaðý için tek tek sisteme entegre etmektense assembly'in kendisinin bulmasýný istiyoruz. RegisterValidatorsFromAssemblyContaining<Program> metodu sayesinde generic<> içerisine verdiðim class'ýn bulunduðu assembly neyse o validatorlarin hepsini bulacak ve sisteme entegre edecektir.  
 
 builder.Services.AddDistributedMemoryCache(); //Eðer session kompleks yapýlarla çalýþmak için Extension metodu eklenme durumuna maruz kalmýþsa bu kod projenizin saðlýklý çalýþmasý için gereklidir. (Memory'de parçalayýp daðýt, tek bir blokta tutma)
 
