@@ -3,7 +3,9 @@ CETIN ONLINE MARKET (E-COMMERCE PROJECT) DOCUMENTATION
 • Bu dokümantasyon, bir e-ticaret sitesinin tasarımı ve geliştirilmesi için gerekli adımları içermektedir. 
 Projede, kullanıcıların süpermarket ürünleri satın alabileceği bir web sitesi oluşturulacaktır. 
 
+
 PROJE İSTEKLERİ :
+
 • Kullanıcılar ürünleri kategoriler aracılığıyla listeleyebilecek ve sepetlerine ürünleri atabilecekler.
 
 • Kullanıcılar hesap oluşturabilecek ve oturum açabilecekler. Hesap oluşturduktan sonra üyelik onaylama maili gidecek ve üyeliklerini onaylayacaklar.
